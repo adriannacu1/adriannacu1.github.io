@@ -18,16 +18,33 @@ class DigitalScrapbook {
         const startDate = new Date(2024, 11, 7); // December 7, 2024 (month is 0-indexed)
         const endDate = new Date(2025, 9, 7);   // October 7, 2025
         
+        // Photo mapping for each month
+        const photoMap = {
+            'DEC 2024': 'DEC 2024.jpg',
+            'JAN 2025': 'JAN 2025.jpg',
+            'FEB 2025': 'FEB 2025.jpg',
+            'MARCH 2025': 'MARCH 2025.jpg',
+            'APRIL 2025': 'APRIL 2025.jpg',
+            'MAY 2025': 'MAY 2025.jpg',
+            'JUNE 2025': 'JUNE 2025.jpg',
+            'JULY 2025': 'JULY 2025.jpg',
+            'AUG 2025': 'AUG 2025.jpg',
+            'SEP 2025': 'SEP 2025.jpg'
+        };
+        
         this.monthsaryDates = [];
         let currentDate = new Date(startDate);
         let monthCount = 1;
 
         while (currentDate <= endDate) {
+            const monthKey = this.getPhotoKey(currentDate);
             this.monthsaryDates.push({
                 date: new Date(currentDate),
                 monthNumber: monthCount,
                 title: this.getMonthsaryTitle(monthCount),
-                formattedDate: this.formatDate(currentDate)
+                formattedDate: this.formatDate(currentDate),
+                photo: photoMap[monthKey] || null,
+                photoKey: monthKey
             });
 
             // Add one month
@@ -35,7 +52,15 @@ class DigitalScrapbook {
             monthCount++;
         }
 
-        console.log('Generated monthsary dates:', this.monthsaryDates);
+        console.log('Generated monthsary dates with photos:', this.monthsaryDates);
+    }
+
+    getPhotoKey(date) {
+        const monthNames = {
+            0: 'JAN', 1: 'FEB', 2: 'MARCH', 3: 'APRIL', 4: 'MAY', 5: 'JUNE',
+            6: 'JULY', 7: 'AUG', 8: 'SEP', 9: 'OCT', 10: 'NOV', 11: 'DEC'
+        };
+        return `${monthNames[date.getMonth()]} ${date.getFullYear()}`;
     }
 
     getMonthsaryTitle(monthNumber) {
@@ -73,19 +98,37 @@ class DigitalScrapbook {
             page.className = 'page monthsary-page';
             page.id = `page-${index + 1}`;
             page.style.display = 'none'; // Initially hidden
+            
+            const photoSection = monthsary.photo ? `
+                <div class="photo-container">
+                    <img src="assets/images/${monthsary.photo}" alt="${monthsary.title}" class="monthsary-photo" loading="lazy">
+                    <div class="photo-frame"></div>
+                </div>
+            ` : `
+                <div class="photo-placeholder">
+                    <i class="fas fa-camera" style="font-size: 3rem; color: #FFB6C1; margin-bottom: 15px;"></i>
+                    <p style="font-size: 1rem; color: #DB7093;">${monthsary.photoKey}<br>Photo coming soon...</p>
+                </div>
+            `;
+            
             page.innerHTML = `
                 <div class="content-wrapper">
                     <div class="date-container animate__animated">
                         <h2 class="monthsary-title">${monthsary.title}</h2>
                         <p class="monthsary-date">${monthsary.formattedDate}</p>
+                        
+                        ${photoSection}
+                        
                         <div class="heart-decoration">
                             <i class="fas fa-heart"></i>
                             <i class="fas fa-heart"></i>
                             <i class="fas fa-heart"></i>
                         </div>
-                        <div class="memory-placeholder" style="margin-top: 30px; opacity: 0.6;">
-                            <i class="fas fa-image" style="font-size: 2rem; color: #FFB6C1; margin-bottom: 10px;"></i>
-                            <p style="font-size: 0.9rem; color: #DB7093;">Memory to be added...</p>
+                        
+                        <div class="memory-note">
+                            <p style="font-size: 0.95rem; color: #DB7093; font-style: italic; margin-top: 20px;">
+                                ${this.getMemoryNote(monthsary.monthNumber)}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -97,6 +140,22 @@ class DigitalScrapbook {
         this.totalPages = this.monthsaryDates.length + 1; // +1 for cover page
         document.getElementById('total-pages').textContent = this.totalPages - 1; // Don't count cover in display
         console.log('Total pages created:', this.totalPages);
+    }
+
+    getMemoryNote(monthNumber) {
+        const notes = {
+            1: "Where our beautiful story began... 💕",
+            2: "Two months of endless smiles and butterflies 🦋",
+            3: "Three months of growing closer every day 🌸",
+            4: "Four months of sweet memories and inside jokes 😊",
+            5: "Five months of adventures and cozy moments 🌙",
+            6: "Half a year of pure happiness together 💖",
+            7: "Seven months of love that keeps growing stronger 💪",
+            8: "Eight months of being each other's favorite person 👫",
+            9: "Nine months of creating our own little world 🌍",
+            10: "Ten amazing months - and this is just the beginning! ✨"
+        };
+        return notes[monthNumber] || "Every moment with you is precious 💝";
     }
 
     updateNavigation() {

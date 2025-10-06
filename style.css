@@ -125,7 +125,7 @@ body {
 
 /* Monthsary Page Styles */
 .monthsary-page .date-container {
-    padding: 60px 20px;
+    padding: 40px 20px;
 }
 
 .monthsary-title {
@@ -133,19 +133,74 @@ body {
     font-size: 3rem;
     font-weight: 600;
     color: #FF1493;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-shadow: 0 4px 8px rgba(255, 20, 147, 0.2);
 }
 
 .monthsary-date {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     color: #DB7093;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-weight: 400;
 }
 
+/* Photo Styles */
+.photo-container {
+    position: relative;
+    margin: 25px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.monthsary-photo {
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(255, 105, 180, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    object-fit: cover;
+}
+
+.monthsary-photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(255, 105, 180, 0.4);
+}
+
+.photo-frame {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid rgba(255, 182, 193, 0.4);
+    border-radius: 25px;
+    pointer-events: none;
+    background: linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.1) 50%, transparent 52%);
+}
+
+.photo-placeholder {
+    padding: 40px 20px;
+    text-align: center;
+    background: rgba(255, 182, 193, 0.1);
+    border-radius: 20px;
+    border: 2px dashed rgba(255, 182, 193, 0.3);
+    margin: 25px 0;
+}
+
+.memory-note {
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 182, 193, 0.1);
+    border-radius: 15px;
+    border-left: 4px solid #FFB6C1;
+}
+
 .heart-decoration {
-    margin-top: 30px;
+    margin: 25px 0;
 }
 
 .heart-decoration i {
@@ -269,11 +324,16 @@ body {
     }
     
     .monthsary-date {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+    }
+    
+    .monthsary-photo {
+        max-width: 250px;
+        max-height: 250px;
     }
     
     .content-wrapper {
-        padding: 30px 20px;
+        padding: 25px 15px;
     }
     
     .navigation {
@@ -295,6 +355,20 @@ body {
     
     .monthsary-title {
         font-size: 2rem;
+    }
+    
+    .monthsary-photo {
+        max-width: 200px;
+        max-height: 200px;
+    }
+    
+    .photo-placeholder {
+        padding: 25px 15px;
+    }
+    
+    .memory-note {
+        padding: 12px;
+        margin-top: 15px;
     }
     
     .navigation {
