@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 💖 Our Story - Digital Scrapbook
 
 A beautiful, romantic digital scrapbook website to celebrate your love journey from December 7, 2024 to October 7, 2025.
@@ -73,3 +74,6 @@ Ready to be hosted on **adkdev.me**
 ---
 
 *Celebrate every moment of your love story! 💕*
+=======
+# adriannacu1.github.io
+>>>>>>> cc9daf8033fe3399729b70acd689d771fbebac9a
