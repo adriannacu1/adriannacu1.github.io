@@ -1,0 +1,331 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FFF8F9 0%, #FFE8EC 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container-fluid {
+    padding: 0;
+}
+
+/* Scrapbook Container */
+.scrapbook-container {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Page Styles */
+.page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    min-height: 500px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 182, 193, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+.page.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.page.slide-out-left {
+    opacity: 0;
+    transform: translate(-150%, -50%) scale(0.8);
+}
+
+.page.slide-out-right {
+    opacity: 0;
+    transform: translate(50%, -50%) scale(0.8);
+}
+
+.page.slide-in-left {
+    opacity: 0;
+    transform: translate(-150%, -50%) scale(0.8);
+}
+
+.page.slide-in-right {
+    opacity: 0;
+    transform: translate(50%, -50%) scale(0.8);
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+}
+
+/* Cover Page Styles */
+.cover-page .heart-icon {
+    font-size: 4rem;
+    color: #FF69B4;
+    margin-bottom: 30px;
+    text-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+}
+
+.cover-page .title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    font-weight: 700;
+    color: #FF1493;
+    margin-bottom: 15px;
+    text-shadow: 0 4px 8px rgba(255, 20, 147, 0.2);
+}
+
+.cover-page .subtitle {
+    font-size: 1.3rem;
+    color: #DB7093;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.start-btn {
+    background: linear-gradient(135deg, #FF69B4, #FF1493);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.start-btn:hover {
+    background: linear-gradient(135deg, #FF1493, #DC143C);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.6);
+    color: white;
+}
+
+/* Monthsary Page Styles */
+.monthsary-page .date-container {
+    padding: 60px 20px;
+}
+
+.monthsary-title {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #FF1493;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(255, 20, 147, 0.2);
+}
+
+.monthsary-date {
+    font-size: 1.5rem;
+    color: #DB7093;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+
+.heart-decoration {
+    margin-top: 30px;
+}
+
+.heart-decoration i {
+    font-size: 1.5rem;
+    color: #FFB6C1;
+    margin: 0 10px;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.heart-decoration i:nth-child(2) {
+    animation-delay: 0.3s;
+    color: #FF69B4;
+    font-size: 2rem;
+}
+
+.heart-decoration i:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+@keyframes heartbeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+/* Navigation Styles */
+.navigation {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 10px 30px rgba(255, 182, 193, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 182, 193, 0.2);
+}
+
+.nav-btn {
+    background: linear-gradient(135deg, #FFB6C1, #FF69B4);
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+}
+
+.nav-btn:hover {
+    background: linear-gradient(135deg, #FF69B4, #FF1493);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.5);
+    color: white;
+}
+
+.nav-btn:disabled {
+    background: #E0E0E0;
+    color: #A0A0A0;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.page-indicator {
+    font-size: 1rem;
+    color: #DB7093;
+    font-weight: 500;
+    background: rgba(255, 182, 193, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+}
+
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1000;
+}
+
+.footer p {
+    font-size: 0.9rem;
+    color: #DB7093;
+    margin: 0;
+    opacity: 0.8;
+}
+
+.footer i {
+    color: #FF69B4;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page {
+        width: 95%;
+        min-height: 400px;
+    }
+    
+    .cover-page .title {
+        font-size: 3rem;
+    }
+    
+    .cover-page .heart-icon {
+        font-size: 3rem;
+    }
+    
+    .monthsary-title {
+        font-size: 2.5rem;
+    }
+    
+    .monthsary-date {
+        font-size: 1.3rem;
+    }
+    
+    .content-wrapper {
+        padding: 30px 20px;
+    }
+    
+    .navigation {
+        bottom: 20px;
+        gap: 20px;
+        padding: 12px 20px;
+    }
+    
+    .nav-btn {
+        padding: 10px 16px;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cover-page .title {
+        font-size: 2.5rem;
+    }
+    
+    .monthsary-title {
+        font-size: 2rem;
+    }
+    
+    .navigation {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .page-indicator {
+        order: -1;
+    }
+}
+
+/* Loading Animation */
+.page-loading {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+/* Custom Animations */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.animate-in {
+    animation: fadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
