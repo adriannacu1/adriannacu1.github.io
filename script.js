@@ -153,7 +153,11 @@ class DigitalScrapbook {
             7: "Seven months of love that keeps growing stronger 💪",
             8: "Eight months of being each other's favorite person 👫",
             9: "Nine months of creating our own little world 🌍",
-            10: "Ten amazing months - and this is just the beginning! ✨"
+            10: `Ten amazing months - and this is just the beginning! ✨
+                 <br><br>
+                 <button class="love-letter-btn" onclick="window.scrapbook.showLoveLetter()">
+                     <i class="fas fa-envelope-heart"></i> Read My Letter
+                 </button>`
         };
         return notes[monthNumber] || "Every moment with you is precious 💝";
     }
@@ -238,6 +242,13 @@ class DigitalScrapbook {
                 this.currentPageIndex = pageIndex;
                 this.updateNavigation();
                 
+                // Check if this is the 10th monthsary (last page) and show letter
+                if (pageIndex === this.totalPages - 1) {
+                    setTimeout(() => {
+                        this.showLoveLetter();
+                    }, 1500); // Show letter after page animation completes
+                }
+                
                 setTimeout(() => {
                     this.isAnimating = false;
                     targetPage.classList.remove('animate-in');
@@ -247,6 +258,23 @@ class DigitalScrapbook {
                 }, 600);
             }, 50);
         }, 300);
+    }
+
+    showLoveLetter() {
+        const modal = document.getElementById('letter-modal');
+        modal.classList.add('show');
+        
+        // Add some sparkle effects when letter appears
+        for (let i = 0; i < 10; i++) {
+            setTimeout(() => {
+                createSparkle();
+            }, i * 200);
+        }
+    }
+
+    closeLoveLetter() {
+        const modal = document.getElementById('letter-modal');
+        modal.classList.remove('show');
     }
 
     nextPage() {
@@ -347,6 +375,12 @@ function prevPage() {
         window.scrapbook.prevPage();
     } else {
         console.error('Scrapbook not initialized yet');
+    }
+}
+
+function closeLetter() {
+    if (window.scrapbook) {
+        window.scrapbook.closeLoveLetter();
     }
 }
 
